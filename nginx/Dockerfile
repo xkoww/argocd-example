@@ -1,4 +1,4 @@
-FROM rockylinux:latest
+FROM rockylinux:9.3.20231119-minimal
 RUN yum install -y epel-release && \
     yum install -y nginx
 
