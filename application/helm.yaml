@@ -9,9 +9,8 @@ spec:
     namespace: nginx-helm
     server: 'https://kubernetes.default.svc'
   source:
-    path: 'app'
     repoURL: 'https://github.com/xkoww/argocd-example.git'
-    targetRevision: 'main'
-    chart: 'helm-demo'
+    targetRevision: 'HEAD'
+    path: 'helm-demo'
   sources: []
   project: default
