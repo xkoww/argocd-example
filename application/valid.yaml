@@ -13,7 +13,6 @@ spec:
     targetRevision: HEAD
   sources: []
   project: default
-  syncPolicy:
-    syncOptions:
-      #  - Validate=false
-       - CreateNamespace=true
+  # syncPolicy:
+  #   syncOptions:
+  #      - Validate=false
