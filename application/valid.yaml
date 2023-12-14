@@ -15,5 +15,5 @@ spec:
   project: default
   syncPolicy:
     syncOptions:
-       - Validate=false
+      #  - Validate=false
        - CreateNamespace=true

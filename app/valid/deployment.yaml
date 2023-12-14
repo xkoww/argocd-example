@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v
 kind: Deployment
 metadata:
   name: nginx-hello-world
@@ -6,7 +6,6 @@ metadata:
     app: nginx-hello-world
 spec:
   replicas: 1
-  replicas: 2
   selector:
     matchLabels:
       app: nginx-hello-world
