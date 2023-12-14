@@ -1,6 +1,6 @@
 FROM rockylinux:9.3.20231119-minimal
-RUN yum install -y epel-release && \
-    yum install -y nginx
+RUN dnf install -y epel-release && \
+    dnf install -y nginx
 
 COPY index.html /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
