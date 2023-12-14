@@ -1,18 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: valid
+  name: prune
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: valid
+    namespace: nginx-prune
     server: 'https://kubernetes.default.svc'
   source:
-    path: app/valid
+    path: app/prune
     repoURL: 'https://github.com/xkoww/argocd-example.git'
     targetRevision: HEAD
   sources: []
   project: default
-  # syncPolicy:
-  #   syncOptions:
-  #      - Validate=false
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+
