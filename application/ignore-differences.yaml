@@ -13,11 +13,11 @@ spec:
     targetRevision: HEAD
   sources: []
   project: default
-  # ignoreDifferences:
-  # - group: "apps"
-  #   kind: "Deployment"
-  #   jsonPointers:
-  #   - /spec/replicas
+  ignoreDifferences:
+  - group: "apps"
+    kind: "Deployment"
+    jsonPointers:
+    - /spec/replicas
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
