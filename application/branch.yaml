@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: target
+  name: branch
   namespace: openshift-gitops
 spec:
   destination:
     name: ''
-    namespace: nginx-target
+    namespace: nginx-branch
     server: 'https://kubernetes.default.svc'
   source:
     path: app/branch
