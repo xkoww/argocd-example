@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm
+  namespace: openshift-gitops
+spec:
+  destination:
+    name: ''
+    namespace: nginx-helm
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 'app'
+    repoURL: 'https://github.com/xkoww/argocd-example.git'
+    targetRevision: 'main'
+    chart: 'helm-demo'
+  sources: []
+  project: default
