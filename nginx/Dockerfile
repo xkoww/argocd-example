@@ -1,4 +1,4 @@
-FROM rockylinux:9.3.20231119-minimal
+FROM rockylinux:9
 RUN dnf install -y epel-release && \
     dnf install -y nginx
 
