@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: source1
+  name: source
   namespace: openshift-gitops
 spec:
   destination:
     name: ''
-    namespace: nginx-source1
+    namespace: nginx-source
     server: 'https://kubernetes.default.svc'
   source:
-    path: app/source1
+    path: app/source
     repoURL: 'https://github.com/xkoww/argocd-example.git'
     targetRevision: HEAD
     directory:
