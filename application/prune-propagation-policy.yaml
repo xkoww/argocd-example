@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prune-policy
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: nginx-prune-policy
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: app/prune-policy
+    repoURL: 'https://github.com/xkoww/argocd-example.git'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+

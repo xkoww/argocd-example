@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: create-meta-ns
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: nginx-meta-ns
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: app/source
+    repoURL: 'https://github.com/xkoww/argocd-example.git'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels: 
+        test: app
+      annotations: 
+        aaa: xxxx
+    syncOptions:
+      - CreateNamespace=true
