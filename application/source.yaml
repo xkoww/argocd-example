@@ -12,7 +12,5 @@ spec:
     path: app/source
     repoURL: 'https://github.com/xkoww/argocd-example.git'
     targetRevision: HEAD
-    directory:
-      recurse: false
   sources: []
   project: default

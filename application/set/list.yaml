@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: list
+spec:
+  generators:
+    - list:
+        elements:
+          - namespace: list-test1
+          - namespace: list-test2
+          - namespace: list-test3
+  template:
+    metadata:
+      name: "{{namespace}}-nginx"
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/xkoww/argocd-example.git"
+        targetRevision: HEAD
+        path: app/source
+      destination:
+        namespace: "{{namespace}}"
+        server: "https://kubernetes.default.svc"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
