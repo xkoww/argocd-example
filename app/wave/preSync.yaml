@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: preSync
+  name: presync
   labels:
-    app: preSync
+    app: presync
   annotations:
     argocd.argoproj.io/hook: PreSync
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: preSync
+      app: presync
   template:
     metadata:
       labels:
-        app: preSync
+        app: presync
     spec:
       containers:
         - name: nginx

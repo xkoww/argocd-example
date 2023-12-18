@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postSync
+  name: postsync
   labels:
-    app: postSync
+    app: postsync
   annotations:
     argocd.argoproj.io/hook: PostSync
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postSync
+      app: postsync
   template:
     metadata:
       labels:
-        app: postSync
+        app: postsync
     spec:
       containers:
         - name: nginx
