@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: presync
+  name: hookdelete
   labels:
-    app: presync
+    app: hookdelete
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -11,11 +11,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: presync
+      app: hookdelete
   template:
     metadata:
       labels:
-        app: presync
+        app: hookdelete
     spec:
       containers:
         - name: nginx
