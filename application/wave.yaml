@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wave
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: nginx-wave
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: app/wave
+    repoURL: 'https://github.com/xkoww/argocd-example.git'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

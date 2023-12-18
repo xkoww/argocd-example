@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-hello-world
+  labels:
+    app: nginx-hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-hello-world
+  template:
+    metadata:
+      labels:
+        app: nginx-hello-world
+    spec:
+      containers:
+        - name: nginx
+          image: "harbor.cnsdomain.com/argocd/nginx:v0.0.1"
+          ports:
+            - containerPort: 8080
+          lifecycle:
+            preStart:
+              exec:
+                command: ["/bin/sh","-c","sleep 10"]

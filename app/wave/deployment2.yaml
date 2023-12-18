@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-hello-world2
+  labels:
+    app: nginx-hello-world2
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-hello-world2
+  template:
+    metadata:
+      labels:
+        app: nginx-hello-world2
+    spec:
+      containers:
+        - name: nginx
+          image: "harbor.cnsdomain.com/argocd/nginx:v0.0.1"
+          ports:
+            - containerPort: 8080
+          lifecycle:
+            preStart:
+              exec:
+                command: ["/bin/sh","-c","sleep 15"]

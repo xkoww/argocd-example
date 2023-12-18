@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-git
+spec:
+  generators:
+    # matrix 'parent' generator
+    - matrix:
+        generators:
+          # git generator, 'child' #1
+          - git:
+              repoURL: "https://github.com/xkoww/argocd-example.git"
+              revision: HEAD
+              directories:
+                - path: set/*
+          # cluster generator, 'child' #2
+          - clusters: {}
+  template:
+    metadata:
+      name: "{{path.basename}}-{{name}}"
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/xkoww/argocd-example.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        server: "{{server}}"
+        namespace: "{{path.basename}}"
