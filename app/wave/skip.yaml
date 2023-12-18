@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skip
+  labels:
+    app: skip
+  annotations:
+    argocd.argoproj.io/hook: Skip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skip
+  template:
+    metadata:
+      labels:
+        app: skip
+    spec:
+      containers:
+        - name: nginx
+          image: "harbor.cnsdomain.com/argocd/nginx:v0.0.1"
+          ports:
+            - containerPort: 8080
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh","-c","sleep 5"]

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: preSync
+  labels:
+    app: preSync
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: preSync
+  template:
+    metadata:
+      labels:
+        app: preSync
+    spec:
+      containers:
+        - name: nginx
+          image: "harbor.cnsdomain.com/argocd/nginx:v0.0.1"
+          ports:
+            - containerPort: 8080
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh","-c","sleep 5"]

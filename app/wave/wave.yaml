@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-hello-world2
+  name: wave
   labels:
-    app: nginx-hello-world2
+    app: wave
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-hello-world2
+      app: wave
   template:
     metadata:
       labels:
-        app: nginx-hello-world2
+        app: wave
     spec:
       containers:
         - name: nginx
@@ -24,4 +24,4 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh","-c","sleep 15"]
+                command: ["/bin/sh","-c","sleep 5"]

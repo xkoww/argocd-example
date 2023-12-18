@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-hello-world3
+  name: postSync
   labels:
-    app: nginx-hello-world3
+    app: postSync
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/hook: PostSync
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-hello-world2
+      app: postSync
   template:
     metadata:
       labels:
-        app: nginx-hello-world2
+        app: postSync
     spec:
       containers:
         - name: nginx
